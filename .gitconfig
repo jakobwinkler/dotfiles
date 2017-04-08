@@ -1,0 +1,6 @@
+[user]
+	email = me@jakobwinkler.me
+	name = Jakob Winkler
+[alias]
+	dog = log --decorate --oneline --graph
+	adog = log --all --decorate --oneline --graph
