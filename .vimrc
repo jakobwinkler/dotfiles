@@ -1,3 +1,4 @@
+" NOTE: remember to link from .config/nvim/init.vim
 " I don't think this does anything for recent vim (or neovim)
 set nocompatible
 
@@ -18,23 +19,21 @@ Plugin 'derekwyatt/vim-fswitch'             " f8 toggles between .h/.c(pp)
 Plugin 'derekwyatt/vim-protodef'            " <Leader>PP implements functions from header
 Plugin 'SirVer/ultisnips'                   " snippets engine (tab toggles)
 Plugin 'honza/vim-snippets'                 " snippets files for ^
-Plugin 'kien/ctrlp.vim'                     " ctrl-p fuzzy file finder
+Plugin 'ctrlpvim/ctrlp.vim'                 " ctrl-p fuzzy file finder
 Plugin 'altercation/vim-colors-solarized'   " color scheme, duh.
 Plugin 'tpope/vim-fugitive'                 " git plugin (use <Leader>-g-something
 Plugin 'myusuf3/numbers.vim'                " relative/absolute line numbers combined
-Plugin 'bling/vim-airline'                  " status line at the bottom <3 (needs powerline fonts)
+Plugin 'vim-airline/vim-airline'            " status line at the bottom <3 (needs powerline fonts)
+Plugin 'vim-airline/vim-airline-themes'     " status line at the bottom <3 (needs powerline fonts)
 Plugin 'lervag/vimtex'                      " tex compilation/folding
 Plugin 'flazz/vim-colorschemes'             " more colors
 Plugin 'tpope/vim-markdown'                 " markdown support
 Plugin 'scrooloose/syntastic'               " linting and auto-compiling (in use with vcom for vhdl)
 Plugin 'ervandew/supertab'                  " used for syntastic
-Plugin 'mhinz/vim-startify'                 " splash screen :)
-Plugin 'wikitopian/hardmode'                " disable hjkl, arrow keys
 
 call vundle#end()
 
-" hard mode.
-nnoremap <leader>h <Esc>:call ToggleHardMode()<CR>
+colorscheme solarized
 
 "
 " Configuration for YouCompleteMe. The extra_conf file sets compiler flags
@@ -75,6 +74,13 @@ let g:tlist_vhdl_settings   = 'vhdl;d:package declarations;b:package bodies;e:en
 "
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden
+      \ --ignore .git
+      \ --ignore .svn
+      \ --ignore .hg
+      \ --ignore .DS_Store
+      \ --ignore "**/*.pyc"
+      \ -g ""'
 
 " gcc output
 set wildignore+=*.o
@@ -89,6 +95,8 @@ set wildignore+=*.qpg
 let g:numbers_exclude = ['unite', 'tagbar', 'startify', 'gundo', 'vimshell', 'w3m', 'nerdtree']
 
 let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
+
 set laststatus=2
 
 "
